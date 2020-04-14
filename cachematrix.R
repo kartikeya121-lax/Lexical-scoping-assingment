@@ -33,4 +33,20 @@ makeCacheMatrix <- function(x = matrix()) {
        set_inverse = set_inverse,
        get_inverse = get_inverse)
 }
+##2ND FUNCTION AND EDIT 2 HERE,
+cacheSolve <- function(x, ...) {   mat <- x$getInverse()
+## RETURNING THE INVERSE IF ITS NULL.
+if( !is.null( mat) ) {  
+  message("getting the cached value")
+  return( mat)
+}
 
+## GETTING MATRIX FROM OBJECT.
+data <- x$get()
+mat <- solve(data) %*% data         ##THIS METHOD IS USED TO GET THE INVERSE OF A MATRIX
+x$set_inverse( mat)  ##SETTING THE INVERSE FUNCTION.
+
+
+mat
+}
+## RETURNING THE INVERSE OF x MATRIX
